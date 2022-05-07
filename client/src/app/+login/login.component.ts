@@ -99,7 +99,7 @@ export class LoginComponent extends FormReactive implements OnInit, AfterViewIni
   }
 
   getAuthHref (auth: RegisteredExternalAuthConfig) {
-    return PluginsManager.getExternalAuthHref(auth)
+    return PluginsManager.getExternalAuthHref(auth) + '?previousUrl=' + this.redirectService.getPreviousUrl();
   }
 
   login () {
