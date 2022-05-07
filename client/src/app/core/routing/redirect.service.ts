@@ -46,6 +46,15 @@ export class RedirectService {
     return this.defaultTrendingAlgorithm
   }
 
+  getPreviousUrl () { 
+    const exceptions = [ '/verify-account', '/reset-password' ] 
+    if (this.previousUrl) { 
+      const isException = exceptions.find(e => this.previousUrl.startsWith(e)) 
+      if (!isException) return this.previousUrl 
+    } 
+    return this.defaultRoute; 
+  }
+
   redirectToPreviousRoute (fallbackRoute: string[] = null) {
     const exceptions = [
       '/verify-account',
